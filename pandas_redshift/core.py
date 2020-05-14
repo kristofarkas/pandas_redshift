@@ -259,7 +259,7 @@ def pandas_to_redshift(data_frame,
     # Validate column names.
     data_frame = validate_column_names(data_frame)
     # Send data to S3
-    csv_name = '{}-{}.csv'.format(redshift_table_name, uuid.uuid4())
+    csv_name = '{}.tsv'.format(redshift_table_name)
     s3_kwargs = {k: v for k, v in kwargs.items()
         if k in S3_ACCEPTED_KWARGS and v is not None}
     df_to_s3(data_frame, csv_name, index, save_local, delimiter, verbose=verbose, **s3_kwargs)
